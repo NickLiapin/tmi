@@ -18,10 +18,15 @@
             margin-bottom: 5px;
         }
         .menu-item input, .menu-item textarea {
-            width: calc(100% - 40px);
+            width: calc(100% - 60px);
             margin-bottom: 5px;
         }
-        #saveButton {
+
+        input[type="text"] {
+            width: 250px; /* Will be wide enough to fit 10 characters of the current font */
+        }
+
+        #saveButton, #exportButton, #importButton {
             padding: 10px 20px;
         }
     </style>

@@ -388,13 +388,18 @@ chrome.runtime.onInstalled.addListener((details) => {
     if (details.reason === "update") {
         chrome.tabs.query({}, (tabs) => {
             tabs.forEach((tab) => {
-                if (tab.url && !tab.url.startsWith('chrome://') && !tab.url.startsWith('chrome-extension://') && !tab.url.startsWith('about:')) {
+                // Check if the tab is not a Chrome internal page and not discarded
+                if (tab.url && !tab.url.startsWith('chrome://') &&
+                    !tab.url.startsWith('chrome-extension://') &&
+                    !tab.url.startsWith('about:') &&
+                    !tab.discarded) {
+
                     chrome.scripting.executeScript({
                         target: { tabId: tab.id },
                         files: ['content.js']
                     }).catch((error) => {
-                    // This line is commented out, but it's used for logging errors when injecting scripts into tabs.
-                    // console.error(Error injecting script into tab '${tab.title}' (${tab.id}):, error);  //todo need fix
+                        // Handle errors when injecting scripts into tabs
+                        // console.error(`Error injecting script into tab ${tab.title}, ${tab.id}`, error);  //todo need fix
                     });
                 }
             });
