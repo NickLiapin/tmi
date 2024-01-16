@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Menu</title>
+    <style>
+        body {
+            width: 800px;
+            font-family: Arial, sans-serif;
+            margin: 10px;
+        }
+        .menu-item {
+            margin-bottom: 10px;
+            padding-left: 20px;
+        }
+        .menu-item label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .menu-item input, .menu-item textarea {
+            width: calc(100% - 40px);
+            margin-bottom: 5px;
+        }
+        #saveButton {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+<h1>Edit Menu</h1>
+<div id="menuEditor">
+
+</div>
+<button id="saveButton">Save</button>
+<button id="exportButton">Export</button>
+<input type="file" id="importInput">
+<button id="importButton">Import</button>
+<script src="popup.js"></script>
+</body>
+</html>
